@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <input v-model="value" type="text" class="input"/>
+    <input v-model="value" type="text" class="input" @keyup.enter="add"/>
     <br />
     <button type="submit" @click="add">添加</button>
     <button type="submit" @click="search">搜索</button>
