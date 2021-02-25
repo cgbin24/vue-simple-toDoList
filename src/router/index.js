@@ -15,11 +15,11 @@ const routes = [
     name: 'About',
     component: () => import(/* webpackChunkName: "about" */ '../views/About/index.vue')
   },
-  // {
-  //   path: '/home',
-  //   name: 'Home',
-  //   component: () => import(/* webpackChunkName: "home" */ '../views/Home/index.vue')
-  // }
+  {
+    path: '/todolist',
+    name: 'ToDoList',
+    component: () => import(/* webpackChunkName: "todolist" */ '../views/ToDoList/index.vue')
+  }
 ]
 
 const router = new VueRouter({
