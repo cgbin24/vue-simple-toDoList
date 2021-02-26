@@ -2,10 +2,10 @@
   <div class="wrapper">
     <input v-model="value" type="text" class="input" @keyup.enter="add"/>
     <br />
-    <button type="submit" @click="add">添加</button>
-    <button type="submit" @click="search">搜索</button>
-    <button type="submit" @click="reset">重置</button>
-    <button type="submit" @click="clear">清空</button>
+    <button type="submit" @click="add">add</button>
+    <button type="submit" @click="search">search</button>
+    <button type="submit" @click="reset">reset</button>
+    <button type="submit" @click="clear">clear</button>
   </div>
 </template>
 
@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     add() {
-      this.$emit('val', this.value)
+      this.value.trim() && this.$emit('val', this.value.trim())
       this.value = ''
     },
     reset() {

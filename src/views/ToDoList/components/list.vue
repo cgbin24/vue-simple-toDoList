@@ -2,7 +2,12 @@
   <div>
     <ul v-if="list.length > 0">
       <li v-for="(item,index) in list" :key="index">
-        <span>{{index+1}}、{{item}}</span> <i @click="del(item,index)"> X </i>
+        {{index+1}}、
+        <input v-if="show" :value="item" type="text" />
+        <span v-else>{{item}}</span> 
+        <i v-if="show" @click="submit(item,index)"> √ </i>
+        <i v-else @click="edit(item,index)"> edit </i>
+        <i @click="del(item,index)"> X </i>
       </li>
     </ul>
   </div>
@@ -37,16 +42,29 @@ export default {
       handler(val) {
         val && (this.list = this.listData)
       }
-    }
+    },
   },
   data() {
     return {
-      list: []
+      list: [],
+      show: false,
+      val: ''
     }
   },
   methods: {
     del(item, index) {
       this.list.splice(index, 1)
+    },
+    edit(item, index) {
+      // this.list.splice(index, 1)
+      this.show = !this.show
+      this.val = item
+      console.log(item, index);
+    },
+    submit(item, index) {
+      this.show = !this.show
+      console.log(item, index);
+      
     }
   }
 }
@@ -70,9 +88,6 @@ ul {
       margin-right: 20px;
       cursor: pointer;
       text-align: right;
-    }
-    i:hover {
-      content: '删除';
     }
   }
 }
