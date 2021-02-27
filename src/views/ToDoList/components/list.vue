@@ -5,9 +5,9 @@
         {{index+1}}、
         <input v-if="show" :value="item" type="text" @keyup.enter="submit(item, index)" @change="getValue" />
         <span v-else>{{item}}</span> 
-        <i @click="del(item,index)"> x </i>
-        <i v-if="show" @click="submit(item,index)"> √ </i>
-        <i class="edit" v-else @click="edit(item,index)"> ✎ </i>
+        <i @click="del(item,index)" title="删除" > x </i>
+        <i v-if="show" @click="submit(item,index)" title="确定" > √ </i>
+        <i class="edit" v-else @click="edit(item,index)" title="编辑" > ✎ </i>
       </li>
     </ul>
   </div>
