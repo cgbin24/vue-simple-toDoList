@@ -3,11 +3,11 @@
     <ul v-if="list.length > 0">
       <li v-for="(item,index) in list" :key="index">
         {{index+1}}、
-        <input v-if="show" :value="item" type="text" />
+        <input v-if="show" :value="item" type="text" @keyup.enter="submit(item, index)" @change="getValue" />
         <span v-else>{{item}}</span> 
+        <i @click="del(item,index)"> × </i>
         <i v-if="show" @click="submit(item,index)"> √ </i>
-        <i v-else @click="edit(item,index)"> edit </i>
-        <i @click="del(item,index)"> X </i>
+        <i class="edit" v-else @click="edit(item,index)"> ✎ </i>
       </li>
     </ul>
   </div>
@@ -48,7 +48,8 @@ export default {
     return {
       list: [],
       show: false,
-      val: ''
+      val: '',
+      item: ''
     }
   },
   methods: {
@@ -64,6 +65,10 @@ export default {
     submit(item, index) {
       this.show = !this.show
       console.log(item, index);
+    },
+    // 获取改变后的值
+    getValue(e) {
+      console.log(e.target.value, e);
       
     }
   }
@@ -88,6 +93,10 @@ ul {
       margin-right: 20px;
       cursor: pointer;
       text-align: right;
+    }
+    .edit {
+      text-align:;
+      border-bottom: 1px solid #ccc;
     }
   }
 }
