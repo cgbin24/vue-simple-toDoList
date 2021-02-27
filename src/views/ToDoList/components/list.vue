@@ -5,7 +5,7 @@
         {{index+1}}、
         <input v-if="show" :value="item" type="text" @keyup.enter="submit(item, index)" @change="getValue" />
         <span v-else>{{item}}</span> 
-        <i @click="del(item,index)"> × </i>
+        <i @click="del(item,index)"> x </i>
         <i v-if="show" @click="submit(item,index)"> √ </i>
         <i class="edit" v-else @click="edit(item,index)"> ✎ </i>
       </li>
@@ -95,8 +95,8 @@ ul {
       text-align: right;
     }
     .edit {
-      text-align:;
       border-bottom: 1px solid #ccc;
+      line-height: 16px;
     }
   }
 }
